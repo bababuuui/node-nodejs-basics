@@ -9,7 +9,8 @@ const __dirname = dirname(__filename)
 
 export const spawnChildProcess = async (args) => {
     const child = fork(path.join(__dirname, 'files', 'script.js'), args , {stdio: ['pipe', 'pipe', 'pipe', 'ipc']});
-    child.stdout.on('data', (data) => { console.log(`stdout: ${data}`); })
+    process.stdin.pipe(child.stdin);
+    child.stdout.on('data', (data) => { console.log(`message from child: ${data}`); })
 };
 
-await spawnChildProcess(["Asda","!23","xzcz"]);
+await spawnChildProcess(["arg1","arg2","arg3"]);
