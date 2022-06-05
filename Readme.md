@@ -2,5 +2,6 @@
 
 How to run 
 
-Edit path to task file in "package.json"  "test-task" script.
-then run in terminal "npm run test-task"
+package.json contains script for each of the task
+
+"npm run `name of script` "
